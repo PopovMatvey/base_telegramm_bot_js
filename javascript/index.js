@@ -1,11 +1,8 @@
 const TelegramAPI = require('node-telegram-bot-api');
-
-const {gameOptions, againOptions} = require("./options.js");
+const {gameOptions, againOptions} = require("../options.js");
 const token = '7868245296:AAEd9HJv9maO1vY2xOq82ROZYFAynuKBUs0';
 const bot = new TelegramAPI(token, { polling: true })
 const chats = {};
-
-
 
 const start = () => {
     bot.setMyCommands([
@@ -24,7 +21,7 @@ const start = () => {
 
             return bot.sendMessage(chatID, `Здравствуйте, ${firstName}!`);
         } if (text === "/info") {
-            return bot.sendMessage(chatID, `Вся доступная информация про вас ${msg.chat.username}`);
+            return bot.sendMessage(chatID, `Вся доступная информация про вас @${msg.chat.username}`);
         } if (text == '/game') {
             return startGame(chatID);
         } if (text === '/again') {
